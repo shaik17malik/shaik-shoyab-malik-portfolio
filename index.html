@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAM36 | Shaik Shoyab Malik — Full Stack Web Developer</title>
+<style>
+:root{
+  --bg:#05060b;--panel:rgba(13,15,25,.82);--text:#f5f7ff;--muted:#9ca3b5;
+  --pink:#ff18c8;--violet:#7c3cff;--cyan:#19d9ff;--line:rgba(255,255,255,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);background:
+  radial-gradient(circle at 10% 10%,rgba(255,24,200,.16),transparent 28%),
+  radial-gradient(circle at 90% 25%,rgba(25,217,255,.12),transparent 28%),
+  radial-gradient(circle at 50% 100%,rgba(124,60,255,.16),transparent 35%),var(--bg);
+  min-height:100vh;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+.container{width:min(1120px,92vw);margin:auto}
+nav{
+  position:sticky;top:0;z-index:20;background:rgba(5,6,11,.72);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)
+}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--pink)}
+.navlinks{display:flex;gap:24px}
+.navlinks a{color:#b9bfd0;text-decoration:none;font-size:14px}.navlinks a:hover{color:#fff}
+.hero{padding:88px 0 70px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.12);
+  border-radius:30px;background:rgba(255,255,255,.04);color:#bfc6d8;font-size:13px
+}
+.badge i{width:7px;height:7px;border-radius:50%;background:#36ef7b;box-shadow:0 0 12px #36ef7b}
+.avatar{
+  width:154px;height:154px;margin:26px auto 28px;display:grid;place-items:center;
+  border-radius:50%;font-size:35px;font-weight:1000;letter-spacing:1px;
+  background:linear-gradient(145deg,#161a2a,#070812);border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 0 0 6px rgba(255,24,200,.10),0 0 42px rgba(255,24,200,.34),inset 0 0 30px rgba(25,217,255,.12);
+  position:relative;overflow:hidden
+}
+.avatar:after{content:"";position:absolute;width:180px;height:35px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.12;transform:rotate(-35deg);animation:sweep 4s infinite}
+@keyframes sweep{0%,55%{left:-210px}100%{left:210px}}
+h1{font-size:clamp(36px,7vw,70px);line-height:1.02;letter-spacing:-2px}
+.gradient{background:linear-gradient(90deg,#fff,#ff86e9,#7cecff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{margin-top:14px;font-size:clamp(20px,4vw,30px);color:#d9a0ff;font-weight:650}
+.hero p{max-width:720px;margin:22px auto;color:var(--muted);font-size:17px;line-height:1.75}
+.stackline{font-weight:800;margin:16px 0 34px;font-size:18px}
+.node{color:#58e78b}.html{color:#ff714c}.css{color:#5c9dff}
+.cta{
+ display:inline-block;padding:14px 30px;border-radius:14px;color:#fff;text-decoration:none;font-weight:800;
+ background:linear-gradient(100deg,var(--pink),var(--violet));box-shadow:0 12px 35px rgba(255,24,200,.25)
+}
+.cta.alt{background:rgba(255,255,255,.045);border:1px solid var(--line);box-shadow:none;margin-left:10px}
+.cta.whatsapp{background:linear-gradient(100deg,#16c784,#0aa86b);box-shadow:0 12px 35px rgba(22,199,132,.22);margin-left:10px}
+.contact-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.section{padding:62px 0}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;margin-bottom:25px}
+.kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#8c96ad}
+h2{font-size:34px;margin-top:5px}.sub{color:var(--muted);font-size:14px}
+.techgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.techcard{
+  min-height:230px;padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--panel);
+  position:relative;overflow:hidden;transition:.3s;perspective:900px
+}
+.techcard:hover{transform:translateY(-7px);border-color:rgba(255,255,255,.2)}
+.tech3d{width:94px;height:94px;margin-bottom:22px;position:relative;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-34deg);transition:.5s}
+.techcard:hover .tech3d{transform:rotateX(18deg) rotateZ(-12deg) translateZ(12px)}
+.face{
+ position:absolute;inset:0;display:grid;place-items:center;font-weight:1000;font-size:22px;
+ border-radius:17px;border:1px solid rgba(255,255,255,.3);backface-visibility:hidden
+}
+.face.front{transform:translateZ(15px)}
+.face.top{transform:rotateX(90deg) translateZ(15px)}
+.face.side{transform:rotateY(90deg) translateZ(15px)}
+.node3d .face{background:linear-gradient(145deg,#153d28,#20bd61)}
+.html3d .face{background:linear-gradient(145deg,#72220d,#ff552d)}
+.css3d .face{background:linear-gradient(145deg,#102d75,#287dff)}
+.techcard h3{font-size:20px}.techcard p{color:var(--muted);margin-top:8px;line-height:1.6;font-size:14px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.project{
+ padding:25px;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+ border:1px solid var(--line);transition:.3s
+}
+.project:hover{transform:translateY(-5px);border-color:rgba(124,60,255,.6)}
+.project .num{font-size:12px;color:#8d96aa;letter-spacing:2px}.project h3{font-size:21px;margin:9px 0}
+.project p{color:var(--muted);font-size:14px;line-height:1.65}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.tag{padding:6px 10px;border-radius:9px;background:rgba(124,60,255,.12);border:1px solid rgba(124,60,255,.25);font-size:11px;color:#c9bcff}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skill{padding:11px 15px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:#d9deeb;font-size:13px}
+.contact{
+ padding:45px;border:1px solid rgba(255,24,200,.22);border-radius:28px;
+ background:radial-gradient(circle at 90% 10%,rgba(25,217,255,.10),transparent 35%),rgba(255,255,255,.025);
+ text-align:center
+}
+.contact p{color:var(--muted);margin:12px auto 24px;max-width:650px;line-height:1.7}
+footer{text-align:center;color:#62697b;font-size:12px;padding:40px 0}
+@media(max-width:720px){
+ .navlinks{display:none}.hero{padding-top:60px}.techgrid,.projects{grid-template-columns:1fr}
+ .sectionhead{display:block}.sub{margin-top:8px}.avatar{width:135px;height:135px}
+ .cta.alt{margin-left:5px}.cta{padding:13px 21px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container navin">
+    <div class="logo">SAM<span>M36</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#tech">Tech</a><a href="#projects">Projects</a>
+      <a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero container" id="about">
+  <div class="badge"><i></i> Available for Opportunities</div>
+  <div class="avatar">SAM36</div>
+  <h1>Shaik Shoyab Malik</h1>
+  <div class="role">Full Stack Web Developer</div>
+  <div class="stackline"><span class="node">Node.js</span> • <span class="html">HTML5</span> • <span class="css">CSS3</span> • JavaScript • Python</div>
+  <p>I build responsive, dynamic and practical web applications with a focus on clean architecture, modern UI, reliable backend systems and real-world problem solving.</p>
+  <a class="cta" href="#projects">Explore My Work</a>
+  <a class="cta alt" href="#contact">Contact</a>
+</header>
+
+<section class="section container" id="tech">
+  <div class="sectionhead"><div><div class="kicker">Core Technologies</div><h2>Built with modern tools</h2></div><div class="sub">Interactive 3D technology showcase</div></div>
+  <div class="techgrid">
+    <article class="techcard">
+      <div class="tech3d node3d"><div class="face front">JS</div><div class="face top">NODE</div><div class="face side">API</div></div>
+      <h3>Node.js</h3><p>Server-side JavaScript, REST APIs, Express.js and backend application development.</p>
+    </article>
+    <article class="techcard">
+      <div class="tech3d html3d"><div class="face front">HTML</div><div class="face top">5</div><div class="face side">&lt;/&gt;</div></div>
+      <h3>HTML5</h3><p>Semantic, accessible and structured interfaces designed for responsive web experiences.</p>
+    </article>
+    <article class="techcard">
+      <div class="tech3d css3d"><div class="face front">CSS</div><div class="face top">3</div><div class="face side">{ }</div></div>
+      <h3>CSS3</h3><p>Advanced layouts, responsive design, animations, gradients and polished visual systems.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section container" id="projects">
+  <div class="sectionhead"><div><div class="kicker">Selected Work</div><h2>Projects</h2></div><div class="sub">Practical projects & full-stack builds</div></div>
+  <div class="projects">
+    <article class="project"><div class="num">01 / FULL STACK</div><h3>Medicine E-Commerce Platform</h3><p>An e-commerce platform for browsing medicines, managing products, shopping-cart flows and order processing with a full-stack architecture.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Backend</span><span class="tag">Database</span></div></article>
+    <article class="project"><div class="num">02 / MANAGEMENT</div><h3>Student Achievement Management System</h3><p>A student-focused system for managing achievements with document uploads and OCR-based extraction to reduce manual data entry.</p><div class="tags"><span class="tag">Node.js</span><span class="tag">Multer</span><span class="tag">Tesseract.js</span><span class="tag">OCR</span></div></article>
+    <article class="project"><div class="num">04 / WEB PLATFORM</div><h3>Student Skill Exchange Platform</h3><p>A collaborative platform concept connecting students for skill sharing, file exchange, real-time communication and interactive learning.</p><div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Socket.io</span><span class="tag">Authentication</span></div></article>
+    <article class="project"><div class="num">06 / HACKATHON</div><h3>PharmaFlow</h3><p>A medicine inventory alert dashboard concept designed to help track stock levels and highlight inventory actions efficiently.</p><div class="tags"><span class="tag">Dashboard</span><span class="tag">Inventory</span><span class="tag">Web</span></div></article>
+  </div>
+</section>
+
+<section class="section container" id="skills">
+  <div class="sectionhead"><div><div class="kicker">Technical Stack</div><h2>Skills</h2></div></div>
+  <div class="skills">
+    <span class="skill">Python</span><span class="skill">Java</span><span class="skill">C</span><span class="skill">JavaScript</span>
+    <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">React</span><span class="skill">Node.js</span>
+    <span class="skill">Express.js</span><span class="skill">Flask</span><span class="skill">Django</span><span class="skill">MongoDB</span>
+    <span class="skill">SQL</span><span class="skill">REST APIs</span><span class="skill">Git & GitHub</span><span class="skill">DSA</span>
+    <span class="skill">DBMS</span><span class="skill">OOP</span><span class="skill">Machine Learning</span>
+  </div>
+</section>
+
+<section class="section container" id="contact">
+  <div class="contact">
+    <div class="kicker">Let's Build Something</div><h2>Have a project in mind?</h2>
+    <p>I'm interested in web development, full-stack projects, internships and opportunities where I can build useful products and grow as a developer.</p>
+    <div class="contact-actions"><a class="cta" href="mailto:shaik17malik@gmail.com">Start a Conversation</a><a class="cta whatsapp" href="https://wa.me/919902813609" target="_blank" rel="noopener">💬 Message on WhatsApp</a></div>
+  </div>
+</section>
+
+<footer>© 2026 Shaik Shoyab Malik • SAM36 • Full Stack Web Developer</footer>
+</body>
+</html>
